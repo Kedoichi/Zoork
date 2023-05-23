@@ -6,7 +6,7 @@
 
 int main()
 {
-std::shared_ptr<Room> start = std::make_shared<Room>("start-room",
+    std::shared_ptr<Room> start = std::make_shared<Room>("start-room",
                                                          "You are standing in an open field west of a white house, with a boarded front door.\n");
 
     std::shared_ptr<Room> south_of_house = std::make_shared<Room>("south-of-house",
@@ -15,7 +15,7 @@ std::shared_ptr<Room> start = std::make_shared<Room>("start-room",
     std::shared_ptr<Room> behind_house = std::make_shared<Room>("behind-house",
                                                                 "You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.\n");
 
-    std::shared_ptr<Room> garden = std::make_shared<Room>("garden", "You are in the garden. The Village Square is on the south of the garden.");
+    std::shared_ptr<Room> garden = std::make_shared<Room>("garden", "You are in the garden, North of the House. There is a big square on the West.");
     std::shared_ptr<Room> villageSquare = std::make_shared<Room>("village-square", "You are in the village square.");
 
     std::shared_ptr<Room> forestPath = std::make_shared<Room>("forest-path", "You are on the forest path. There are two paths in front of you. East: Abandoned-Mine | North: Deeper Forest.");
@@ -27,7 +27,24 @@ std::shared_ptr<Room> start = std::make_shared<Room>("start-room",
     std::shared_ptr<Room> enchantedForest = std::make_shared<Room>("enchanted-forest", "You are in the enchanted forest.");
 
     Passage::createBasicPassage(start.get(), south_of_house.get(), "south", true);
-    Passage::createBasicPassage(south_of_house.get(), behind_house.get(), "east", true);
+    
+    Passage::createBasicPassage(start.get(), behind_house.get(), "west", true);
+    
+    Passage::createBasicPassage(start.get(), garden.get(), "north", true);
+
+    Passage::createBasicPassage(garden.get(), villageSquare.get(), "west", true);
+
+    Passage::createBasicPassage(garden.get(), forestPath.get(), "east", true);
+
+    Passage::createBasicPassage(forestPath.get(), abandonedMine.get(), "east", true);
+
+    Passage::createBasicPassage(abandonedMine.get(), dungeon.get(), "east", true);
+
+    Passage::createBasicPassage(forestPath.get(), deeperForest.get(), "north", true);
+
+    Passage::createBasicPassage(deeperForest.get(), ancientRuin.get(), "north", true);
+
+    Passage::createBasicPassage(ancientRuin.get(), enchantedForest.get(), "east", true);
 
     ZOOrkEngine zoork(start);
 
