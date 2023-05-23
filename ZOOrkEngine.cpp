@@ -174,8 +174,43 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments)
 
 void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments)
 {
-    // To be implemented
-    std::cout << "This functionality is not yet enabled.\n";
+    if (arguments.empty())
+    {
+        std::cout << "Please specify the item you want to drop.\n";
+        return;
+    }
+
+    std::string target = arguments[0];
+    for (size_t i = 1; i < arguments.size(); ++i)
+    {
+        target += " " + arguments[i];
+    }
+    std::string itemName = makeLowercase(target);
+
+    // Check if the player has the specified item in their inventory
+    Item* item = nullptr;
+    for (Item* playerItem : player->getInventory())
+    {
+        if (makeLowercase(playerItem->getName()) == itemName)
+        {
+            item = playerItem;
+            break;
+        }
+    }
+
+    if (item == nullptr)
+    {
+        std::cout << "You don't have a " << itemName << " in your inventory.\n";
+        return;
+    }
+
+    // Remove the item from the player's inventory
+    player->removeItem(itemName);
+
+    // Add the item to the current room's items
+    player->getCurrentRoom()->addItem(item);
+
+    std::cout << "You have dropped the " << item->getName() << ".\n";
 }
 
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments)
