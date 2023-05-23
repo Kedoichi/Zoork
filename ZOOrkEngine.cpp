@@ -95,8 +95,46 @@ void ZOOrkEngine::handleGoCommand(std::vector<std::string> arguments)
 
 void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments)
 {
-    // To be implemented
-    std::cout << "This functionality is not yet enabled.\n";
+    if (arguments.empty())
+    {
+        // print the description of the current room if no other argument
+
+        Room *currentRoom = player->getCurrentRoom();
+        std::cout << currentRoom->getDescription() << std::endl;
+
+        std::vector<Item *> items = currentRoom->getItems();
+        if (!items.empty())
+        {
+            std::cout << "Items in the room:\n";
+            for (Item *item : items)
+            {
+                std::cout << "- " << item->getName() << ": " << item->getDescription() << "\n";
+            }
+        }
+    }
+    else
+    {
+        std::string target = arguments[0];
+
+        // You can implement a lookup mechanism to find the target object in the current room
+        // For example, you can search for the target item or character in the room's containers
+
+        // If the target is found, print its description
+        // Otherwise, print a message indicating that the target is not present
+
+        // Example implementation:
+        Item *item = player->getCurrentRoom()->getItem(target);
+        if (item != nullptr)
+        {
+            std::cout << item->getDescription() << std::endl;
+        }
+        else
+        {
+            std::cout << "There is no " << target << " here." << std::endl;
+        }
+
+        // You can customize the behavior based on your game design and classes
+    }
 }
 
 void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments)

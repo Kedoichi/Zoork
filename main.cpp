@@ -26,10 +26,13 @@ int main()
     std::shared_ptr<Room> ancientRuin = std::make_shared<Room>("ancient-ruin", "You are in the ancient ruin. There is a small path to the East.");
     std::shared_ptr<Room> enchantedForest = std::make_shared<Room>("enchanted-forest", "You are in the enchanted forest.");
 
+// Create Passage
+#pragma region CreatePassage
+
     Passage::createBasicPassage(start.get(), south_of_house.get(), "south", true);
-    
+
     Passage::createBasicPassage(start.get(), behind_house.get(), "west", true);
-    
+
     Passage::createBasicPassage(start.get(), garden.get(), "north", true);
 
     Passage::createBasicPassage(garden.get(), villageSquare.get(), "west", true);
@@ -45,6 +48,34 @@ int main()
     Passage::createBasicPassage(deeperForest.get(), ancientRuin.get(), "north", true);
 
     Passage::createBasicPassage(ancientRuin.get(), enchantedForest.get(), "east", true);
+#pragma endregion
+
+    // Create and add Items
+#pragma region CreateAndAddItem
+
+    Item *key = new Item("Mistic Key", "A small shinning key.");
+    Item *mistericPotion = new Item("Misteric Potion", "A potion that remove adverse effects.");
+    Item *crowbar = new Item("Crowbar", "A sturdy crowbar for prying things open.");
+    Item *backpack = new Item("Backpack", "A tool used for store items.");
+    Item *compass = new Item("Compass", "A navigational tool for finding direction.");
+    Item *miner_pickaxe = new Item("Miner's Pickaxe", "A sturdy pickaxe used for mining.");
+    Item *torch = new Item("Torch", "A burning torch to light your way.");
+    Item *invisibleCoat = new Item("Invisible Coat", "Grants wearer invisibility, stealth, and protection, blending seamlessly into surroundings undetected for strategic advantage.");
+
+
+    start->addItem(key);
+    behind_house->addItem(crowbar);
+    behind_house->addItem(backpack);
+    behind_house->addItem(compass);
+    behind_house->addItem(torch);
+    garden->addItem(mistericPotion);
+    villageSquare->addItem(miner_pickaxe);
+    enchantedForest->addItem(invisibleCoat);
+
+    
+#pragma endregion
+
+
 
     ZOOrkEngine zoork(start);
 

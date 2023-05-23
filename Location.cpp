@@ -15,7 +15,9 @@ void Location::enter()
 {
     enterCommand->execute();
 }
-
+std::string Location::getDescription() const {
+    return description;
+}
 void Location::setEnterCommand(std::shared_ptr<Command> c)
 {
     enterCommand = std::move(c);

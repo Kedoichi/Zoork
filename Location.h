@@ -16,6 +16,7 @@ public:
     Location(const std::string &, const std::string &, std::shared_ptr<Command>);
 
     virtual void enter();
+    virtual std::string getDescription() const;
 
     void setEnterCommand(std::shared_ptr<Command>);
 
