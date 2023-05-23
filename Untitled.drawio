@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" modified="2023-05-23T07:50:25.475Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="JFjejnMjYWPPfrz68MEM" version="21.1.1" type="device">
+  <diagram name="Page-1" id="E6KbRDr2ijUfX6AFsfw0">
+    <mxGraphModel dx="1266" dy="1761" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fX3F1sgW3TbGjPlw7NE2-1" value="start-room" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fX3F1sgW3TbGjPlw7NE2-2" value="south-of-house" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fX3F1sgW3TbGjPlw7NE2-3" value="behind-house" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fX3F1sgW3TbGjPlw7NE2-4" value="garden" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fX3F1sgW3TbGjPlw7NE2-5" value="village-square" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fX3F1sgW3TbGjPlw7NE2-6" value="forest-path" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fX3F1sgW3TbGjPlw7NE2-7" value="abandoned-mine" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fX3F1sgW3TbGjPlw7NE2-8" value="deeper-forest" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="-40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fX3F1sgW3TbGjPlw7NE2-9" value="ancient-ruin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="-160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fX3F1sgW3TbGjPlw7NE2-10" value="enchanted-forest" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="-160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fX3F1sgW3TbGjPlw7NE2-11" value="dungeon" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,86 @@
+[
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/main.cpp.o -c /Users/quocchic/Desktop/ZOOrk/main.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/main.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/Item.cpp.o -c /Users/quocchic/Desktop/ZOOrk/Item.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/Item.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/Item.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/Character.cpp.o -c /Users/quocchic/Desktop/ZOOrk/Character.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/Character.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/Character.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/Location.cpp.o -c /Users/quocchic/Desktop/ZOOrk/Location.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/Location.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/Location.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/GameObject.cpp.o -c /Users/quocchic/Desktop/ZOOrk/GameObject.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/GameObject.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/GameObject.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/Room.cpp.o -c /Users/quocchic/Desktop/ZOOrk/Room.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/Room.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/Room.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/Passage.cpp.o -c /Users/quocchic/Desktop/ZOOrk/Passage.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/Passage.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/Passage.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/NullRoom.cpp.o -c /Users/quocchic/Desktop/ZOOrk/NullRoom.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/NullRoom.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/NullRoom.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/NullCommand.cpp.o -c /Users/quocchic/Desktop/ZOOrk/NullCommand.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/NullCommand.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/NullCommand.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/Player.cpp.o -c /Users/quocchic/Desktop/ZOOrk/Player.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/Player.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/Player.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/RoomDefaultEnterCommand.cpp.o -c /Users/quocchic/Desktop/ZOOrk/RoomDefaultEnterCommand.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/RoomDefaultEnterCommand.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/RoomDefaultEnterCommand.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/ZOOrkEngine.cpp.o -c /Users/quocchic/Desktop/ZOOrk/ZOOrkEngine.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/ZOOrkEngine.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/ZOOrkEngine.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/PassageDefaultEnterCommand.cpp.o -c /Users/quocchic/Desktop/ZOOrk/PassageDefaultEnterCommand.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/PassageDefaultEnterCommand.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/PassageDefaultEnterCommand.cpp.o"
+},
+{
+  "directory": "/Users/quocchic/Desktop/ZOOrk/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -o CMakeFiles/ZOOrk.dir/NullPassage.cpp.o -c /Users/quocchic/Desktop/ZOOrk/NullPassage.cpp",
+  "file": "/Users/quocchic/Desktop/ZOOrk/NullPassage.cpp",
+  "output": "CMakeFiles/ZOOrk.dir/NullPassage.cpp.o"
+}
+]

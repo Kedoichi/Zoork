@@ -1,0 +1,217 @@
+## This file contains all the build statements describing the
+# compilation DAG.
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# 
+# Which is the root file.
+# =============================================================================
+
+# =============================================================================
+# Project: ZOOrk
+# Configurations: Debug
+# =============================================================================
+
+#############################################
+# Minimal version of Ninja required by this file
+
+ninja_required_version = 1.5
+
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
+# =============================================================================
+# Include auxiliary files.
+
+
+#############################################
+# Include rules file.
+
+include CMakeFiles/rules.ninja
+
+# =============================================================================
+
+#############################################
+# Logical path to working directory; prefix for absolute paths.
+
+cmake_ninja_workdir = /Users/rskarbez/CLionProjects/ZOOrk/cmake-build-debug/
+# =============================================================================
+# Object build statements for EXECUTABLE target ZOOrk
+
+
+#############################################
+# Order-only phony target for ZOOrk
+
+build cmake_object_order_depends_target_ZOOrk: phony || CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/main.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/main.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/main.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/Item.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/Item.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/Item.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/Character.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/Character.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/Character.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/Location.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/Location.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/Location.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/GameObject.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/GameObject.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/GameObject.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/Room.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/Room.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/Room.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/Passage.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/Passage.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/Passage.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/NullRoom.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/NullRoom.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/NullRoom.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/NullCommand.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/NullCommand.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/NullCommand.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/Player.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/Player.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/Player.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/RoomDefaultEnterCommand.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/RoomDefaultEnterCommand.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/RoomDefaultEnterCommand.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/ZOOrkEngine.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/ZOOrkEngine.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/ZOOrkEngine.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/PassageDefaultEnterCommand.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/PassageDefaultEnterCommand.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/PassageDefaultEnterCommand.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+build CMakeFiles/ZOOrk.dir/NullPassage.cpp.o: CXX_COMPILER__ZOOrk_Debug /Users/rskarbez/CLionProjects/ZOOrk/NullPassage.cpp || cmake_object_order_depends_target_ZOOrk
+  DEP_FILE = CMakeFiles/ZOOrk.dir/NullPassage.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++20
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  OBJECT_FILE_DIR = CMakeFiles/ZOOrk.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target ZOOrk
+
+
+#############################################
+# Link the executable ZOOrk
+
+build ZOOrk: CXX_EXECUTABLE_LINKER__ZOOrk_Debug CMakeFiles/ZOOrk.dir/main.cpp.o CMakeFiles/ZOOrk.dir/Item.cpp.o CMakeFiles/ZOOrk.dir/Character.cpp.o CMakeFiles/ZOOrk.dir/Location.cpp.o CMakeFiles/ZOOrk.dir/GameObject.cpp.o CMakeFiles/ZOOrk.dir/Room.cpp.o CMakeFiles/ZOOrk.dir/Passage.cpp.o CMakeFiles/ZOOrk.dir/NullRoom.cpp.o CMakeFiles/ZOOrk.dir/NullCommand.cpp.o CMakeFiles/ZOOrk.dir/Player.cpp.o CMakeFiles/ZOOrk.dir/RoomDefaultEnterCommand.cpp.o CMakeFiles/ZOOrk.dir/ZOOrkEngine.cpp.o CMakeFiles/ZOOrk.dir/PassageDefaultEnterCommand.cpp.o CMakeFiles/ZOOrk.dir/NullPassage.cpp.o
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
+  OBJECT_DIR = CMakeFiles/ZOOrk.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = ZOOrk
+  TARGET_PDB = ZOOrk.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/rskarbez/CLionProjects/ZOOrk/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/rskarbez/CLionProjects/ZOOrk/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/rskarbez/CLionProjects/ZOOrk -B/Users/rskarbez/CLionProjects/ZOOrk/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Target aliases.
+
+# =============================================================================
+# Folder targets.
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/rskarbez/CLionProjects/ZOOrk/cmake-build-debug
+
+build all: phony ZOOrk
+
+# =============================================================================
+# Built-in targets
+
+
+#############################################
+# Re-run CMake if any of its inputs changed.
+
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
+  pool = console
+
+
+#############################################
+# A missing CMake input file is not an error.
+
+build ../CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
+
+
+#############################################
+# Clean all the built files.
+
+build clean: CLEAN
+
+
+#############################################
+# Print all primary targets available.
+
+build help: HELP
+
+
+#############################################
+# Make the all target the default.
+
+default all
