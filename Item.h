@@ -19,8 +19,14 @@ public:
 
     void setUseCommand(std::shared_ptr<Command>);
 
+
+    int getDuration() const;
+
+    void decreaseDuration();
+
 protected:
     std::shared_ptr<Command> useCommand;
+    int duration;
 };
 
 #endif //ZOORK_ITEM_H
