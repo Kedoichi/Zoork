@@ -35,6 +35,7 @@ public:
     }
     std::shared_ptr<Passage> getPassage(const std::string &);
     std::string getDescription() const;
+    std::string search() const;
 
 protected:
     std::vector<Item*> items;

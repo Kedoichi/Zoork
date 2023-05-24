@@ -38,6 +38,8 @@ public:
     int getInventorySize() const;
     bool backpackstatus() const;
     void setBackpack(bool value);
+    void setBalance(int value);
+    int getBalance();
     void talk() override
     {
         // Implement player's dialogue here
@@ -45,6 +47,7 @@ public:
     }
 
 private:
+    int balance;
     bool backpackStatus;
     std::vector<Item *> inventory;
     static Player *playerInstance;

@@ -55,12 +55,36 @@ int main()
 #pragma region CreateAndAddItem
 
     Item *mistericPotion = new Item("Misteric Potion", "A potion that remove adverse effects.");
+    mistericPotion->setRequireSearch(false);
+    mistericPotion->setCollectable(false);
+    mistericPotion->setDuration(3);
     Item *crowbar = new Item("Crowbar", "A sturdy crowbar for prying things open.");
+    mistericPotion->setRequireSearch(false);
+    mistericPotion->setDuration(5);
     Item *backpack = new Item("Backpack", "A tool used for store items.");
+    mistericPotion->setRequireSearch(false);
+    mistericPotion->setDuration(1000);
     Item *compass = new Item("Compass", "A navigational tool for finding direction.");
+    mistericPotion->setRequireSearch(false);
+    mistericPotion->setDuration(10000);
     Item *minersPickaxe = new Item("Miner's Pickaxe", "A sturdy pickaxe used for mining.");
+    mistericPotion->setRequireSearch(false);
+    mistericPotion->setDuration(10);
     Item *torch = new Item("Torch", "A burning torch to light your way.");
+    mistericPotion->setRequireSearch(false);
+    mistericPotion->setDuration(5);
     Item *invisibleCoat = new Item("Invisible Coat", "Grants wearer invisibility, stealth, and protection, blending seamlessly into surroundings undetected for strategic advantage.");
+    mistericPotion->setRequireSearch(false);
+    mistericPotion->setDuration(10);
+    Item *hoe = new Item("Silver Hoe","Special tool to collect herb");
+
+    Item *mistericHerb = new Item("Misteric Herb", "It look strange. Better take it to Herbalist first");
+    mistericHerb->setRequireSearch(true);
+    mistericHerb->setCollectable(false);
+
+    Item *mineral = new Item("Mineral", "It look good for weapon. Let's bring it to Blacksmith");
+    mineral->setRequireSearch(true);
+    mineral->setCollectable(false);
 
     behind_house->addItem(crowbar);
     behind_house->addItem(backpack);
@@ -69,6 +93,7 @@ int main()
     garden->addItem(mistericPotion);
     villageSquare->addItem(minersPickaxe);
     enchantedForest->addItem(invisibleCoat);
+    deeperForest->addItem(mistericHerb);
 
 #pragma endregion
 

@@ -14,14 +14,21 @@ public:
     Character(const std::string &, const std::string &);
 
     virtual void talk() = 0; // Pure virtual function
+    void takeDamage(int damage);
+    void getHealth(Item* item);
+    void setHealth(Item* item);
+    void setAttackable(bool attackable);
+    void getDamage(bool attackable);
+    void setDamage(bool attackable);
 protected:
-//    std::vector<Item*> inventory;
+    std::vector<Item*> inventory;
 //    std::vector<std::string> tags;
     int health;
-    int attack;
-    int move;
-    int initiative;
+    int damage;
+    //int move;
+    //int initiative;
     std::vector<std::string> dialogueOptions;
+    bool attackable;
 };
 
 #endif //ZOORK_CHARACTER_H

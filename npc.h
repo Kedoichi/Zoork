@@ -27,7 +27,7 @@ public:
     void talk() override
     {
         std::cout << "Player: \"Hello, herbalist. Do you have any remedies or potions that could aid me?\"" << std::endl;
-        std::cout << "Herbalist: \"Welcome, traveler. I specialize in healing potions. Take this mysterious potion; it cleanses adverse effects. Bring me rare herbs, and I shall reward you handsomely.\"" << std::endl;
+        std::cout << "Herbalist: \"Welcome, traveler. I specialize in healing potions. Take this mysterious potion; it cleanses adverse effects. Bring me rare herbs, and I shall reward you handsomely.\"Remember to use this Silver Hoe to collect\"" << std::endl;
         std::cout << "Player: \"Thank you for your generosity. I'll be on the lookout for those herbs.\"" << std::endl;
     }
 };

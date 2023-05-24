@@ -32,7 +32,10 @@ private:
     void handleDropCommand(std::vector<std::string>);
 
     void handleQuitCommand(std::vector<std::string>);
+    void handleSearchCommand();
+    void handleInventoryCommand();
     void handleTalkCommand(std::vector<std::string>& arguments);
+    void handleUseCommand(std::vector<std::string> arguments);
 
     
 

@@ -14,6 +14,14 @@ bool Player::backpackstatus() const
 {
     return backpackStatus;
 }
+
+
+void Player::setBalance(int value){
+    balance = value;
+}
+int Player::getBalance(){
+    return balance;
+}
 void Player::setBackpack(bool value)
 {
     backpackStatus = value;
@@ -47,3 +55,4 @@ void Player::removeItem(const std::string &itemName)
         }
     }
 }
+
