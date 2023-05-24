@@ -2,6 +2,7 @@
 #include "Passage.h"
 #include "Player.h"
 #include "Room.h"
+#include "npc.h"
 #include "ZOOrkEngine.h"
 
 int main()
@@ -53,7 +54,6 @@ int main()
     // Create and add Items
 #pragma region CreateAndAddItem
 
-    Item *misticKey = new Item("Mistic Key", "A small shinning key.");
     Item *mistericPotion = new Item("Misteric Potion", "A potion that remove adverse effects.");
     Item *crowbar = new Item("Crowbar", "A sturdy crowbar for prying things open.");
     Item *backpack = new Item("Backpack", "A tool used for store items.");
@@ -62,8 +62,6 @@ int main()
     Item *torch = new Item("Torch", "A burning torch to light your way.");
     Item *invisibleCoat = new Item("Invisible Coat", "Grants wearer invisibility, stealth, and protection, blending seamlessly into surroundings undetected for strategic advantage.");
 
-
-    start->addItem(misticKey);
     behind_house->addItem(crowbar);
     behind_house->addItem(backpack);
     behind_house->addItem(compass);
@@ -72,11 +70,22 @@ int main()
     villageSquare->addItem(minersPickaxe);
     enchantedForest->addItem(invisibleCoat);
 
-    
 #pragma endregion
 
+#pragma region NPC
+    TownElder townElder;
+    Herbalist herbalist;
+    Blacksmith blacksmith;
+    TavernOwner tavernOwner;
+    MysteriousStranger mysteriosStranger;
 
-
+    // Set NPC locations
+    start->addCharacter(&townElder);
+    behind_house->addCharacter(&herbalist);
+    villageSquare->addCharacter(&blacksmith);
+    garden->addCharacter(&tavernOwner);
+    ancientRuin->addCharacter(&mysteriosStranger);
+#pragma endregion
     ZOOrkEngine zoork(start);
 
     zoork.run();

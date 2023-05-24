@@ -45,6 +45,10 @@ void ZOOrkEngine::run()
         {
             handleDropCommand(arguments);
         }
+        else if (command == "talk")
+        {
+            handleTalkCommand(arguments);
+        }
         else if (command == "quit")
         {
             handleQuitCommand(arguments);
@@ -188,8 +192,8 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments)
     std::string itemName = makeLowercase(target);
 
     // Check if the player has the specified item in their inventory
-    Item* item = nullptr;
-    for (Item* playerItem : player->getInventory())
+    Item *item = nullptr;
+    for (Item *playerItem : player->getInventory())
     {
         if (makeLowercase(playerItem->getName()) == itemName)
         {
@@ -211,6 +215,33 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments)
     player->getCurrentRoom()->addItem(item);
 
     std::cout << "You have dropped the " << item->getName() << ".\n";
+}
+
+void ZOOrkEngine::handleTalkCommand(std::vector<std::string> &arguments)
+{
+    if (arguments.empty())
+    {
+        std::cout << "Please specify the character you want to talk to.\n";
+        return;
+    }
+
+    std::string target = arguments[0];
+    for (size_t i = 1; i < arguments.size(); ++i)
+    {
+        target += " " + arguments[i];
+    }
+    std::string characterName = makeLowercase(target);
+
+    // Check if the current room has the specified character
+    Character *character = player->getCurrentRoom()->getCharacter(characterName);
+    if (character == nullptr)
+    {
+        std::cout << "There is no " << characterName << " here.\n";
+        return;
+    }
+
+    // Perform the talk action with the character
+    character->talk();
 }
 
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments)

@@ -38,6 +38,11 @@ public:
     int getInventorySize() const;
     bool backpackstatus() const;
     void setBackpack(bool value);
+    void talk() override
+    {
+        // Implement player's dialogue here
+        std::cout << getName() << ": \"Let's win this\"" << std::endl;
+    }
 
 private:
     bool backpackStatus;

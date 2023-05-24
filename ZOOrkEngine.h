@@ -32,6 +32,9 @@ private:
     void handleDropCommand(std::vector<std::string>);
 
     void handleQuitCommand(std::vector<std::string>);
+    void handleTalkCommand(std::vector<std::string>& arguments);
+
+    
 
     static std::vector<std::string> tokenizeString(const std::string&);
 

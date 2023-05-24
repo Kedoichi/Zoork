@@ -36,6 +36,21 @@ void Room::removePassage(const std::string &direction)
         passageMap.erase(it);
     }
 }
+void Room::addCharacter(Character *character)
+{
+    characters.push_back(character);
+}
+Character *Room::getCharacter(const std::string &characterName)
+{
+    for (auto &character : characters)
+    {
+        if (makeLowercase(character->getName()) == characterName)
+        {
+            return character;
+        }
+    }
+    return nullptr;
+}
 
 std::shared_ptr<Passage> Room::getPassage(const std::string &direction)
 {
@@ -66,9 +81,6 @@ void Room::removeItem(const std::string &itemName)
             break;
         }
     }
-
-
-    
 }
 
 Item *Room::getItem(const std::string &itemName)
