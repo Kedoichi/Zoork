@@ -185,6 +185,13 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments)
         return;
     }
 
+    // Is iteam collectable
+
+    if (item->getCollectable() == false)
+    {
+        std::cout << "You can't take that.\nYou might need a proper tools for it.";
+        return;
+    }
     // Add the item to the player's inventory
     player->addItem(item);
 
@@ -261,30 +268,24 @@ void ZOOrkEngine::handleTalkCommand(std::vector<std::string> &arguments)
     // Perform the talk action with the character
     character->talk();
 
-    // Check if the character is the Herbalist
-    if (characterName == "herbalist")
+    // Check if the character is the Mysterious Stranger
+    if (characterName == "mysterious stranger")
     {
         // Check if the player has the hoe in their inventory
-        bool hasHoe = false;
-        for (Item *item : player->getInventory())
-        {
-            if (item->getName() == "Silver Hoe")
-            {
-                hasHoe = true;
-                break;
-            }
-        }
-        if (!hasHoe)
+        bool hasGlass = player->getVisionStatus();
+        if (!hasGlass)
         {
             // Give the hoe to the player
-            Item *hoe = new Item("Silver Hoe", "Special tool to collect herb");
-            player->addItem(hoe);
-            std::cout << "The Herbalist gives you a Silver Hoe.\n";
+            Item *vision = new Item("Mistic Glasses", "There are number on Character. Use examine command for a closer look!!!\nYou can see on the dark now");
+            std::cout << "The Mysterious Stranger gives you a Mistic Glasses.\n";
+            player->addItem(vision);
+            player->setVisionStatus(true);
         }
         else
         {
-            std::cout << "You already have a Silver Hoe.\n";
+            std::cout << "You already have a Mistic Glasses.\n";
         }
+        return;
     }
 }
 
@@ -356,8 +357,8 @@ void ZOOrkEngine::handleUseCommand(std::vector<std::string> arguments)
     std::string itemName = makeLowercase(target);
 
     // Check if the player has the specified item in their inventory
-    Item* item = nullptr;
-    for (Item* playerItem : player->getInventory())
+    Item *item = nullptr;
+    for (Item *playerItem : player->getInventory())
     {
         if (makeLowercase(playerItem->getName()) == itemName)
         {

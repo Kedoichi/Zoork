@@ -9,26 +9,30 @@
 #include "Item.h"
 #include <vector>
 
-class Character : public GameObject {
+class Character : public GameObject
+{
 public:
     Character(const std::string &, const std::string &);
+    // std::string getName();
 
     virtual void talk() = 0; // Pure virtual function
-    void takeDamage(int damage);
-    void getHealth(Item* item);
-    void setHealth(Item* item);
+    int getHealth();
+    void setHealth(int health);
     void setAttackable(bool attackable);
-    void getDamage(bool attackable);
-    void setDamage(bool attackable);
+    bool getAttackable();
+    int getDamage();
+    void setDamage(int damage);
+
 protected:
-    std::vector<Item*> inventory;
-//    std::vector<std::string> tags;
+    // std::string name;
+    std::vector<Item *> inventory;
+    //    std::vector<std::string> tags;
     int health;
     int damage;
-    //int move;
-    //int initiative;
+    // int move;
+    // int initiative;
     std::vector<std::string> dialogueOptions;
     bool attackable;
 };
 
-#endif //ZOORK_CHARACTER_H
+#endif // ZOORK_CHARACTER_H

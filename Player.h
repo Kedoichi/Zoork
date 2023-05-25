@@ -38,6 +38,9 @@ public:
     int getInventorySize() const;
     bool backpackstatus() const;
     void setBackpack(bool value);
+    
+    bool getVisionStatus() const;
+    void setVisionStatus(bool value);
     void setBalance(int value);
     int getBalance();
     void talk() override
@@ -45,10 +48,19 @@ public:
         // Implement player's dialogue here
         std::cout << getName() << ": \"Let's win this\"" << std::endl;
     }
+    void setHerbPoint(int value);
+    int getHerbPoint();
+    void increaseHerbPoint();
+    void setMineralPoint(int value);
+    int getMineralPoint();
+    void increateMineralPoint();
 
 private:
-    int balance;
+    int balance, herbPoint, mineralPoint;
     bool backpackStatus;
+    bool hoeStatus;
+    bool visionStatus;
+
     std::vector<Item *> inventory;
     static Player *playerInstance;
     Room *currentRoom;

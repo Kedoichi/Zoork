@@ -5,7 +5,6 @@
 #include "Item.h"
 
 #include <utility>
-
 Item::Item(const std::string &n, const std::string &d) : GameObject(n, d),
                                                          useCommand(std::make_shared<NullCommand>()) {}
 
@@ -57,3 +56,9 @@ void Item::decreaseDuration()
         --duration;
     }
 }
+
+void Item::setUseable(bool value)
+{
+    useAble = value;
+};
+bool Item::getUseable() const { return useAble; };

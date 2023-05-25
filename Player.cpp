@@ -15,11 +15,12 @@ bool Player::backpackstatus() const
     return backpackStatus;
 }
 
-
-void Player::setBalance(int value){
+void Player::setBalance(int value)
+{
     balance = value;
 }
-int Player::getBalance(){
+int Player::getBalance()
+{
     return balance;
 }
 void Player::setBackpack(bool value)
@@ -56,3 +57,35 @@ void Player::removeItem(const std::string &itemName)
     }
 }
 
+void Player::setHerbPoint(int value)
+{
+    herbPoint = value;
+}
+int Player::getHerbPoint()
+{
+    return herbPoint;
+}
+void Player::increaseHerbPoint()
+{
+    herbPoint++;
+}
+void Player::setMineralPoint(int value)
+{
+    mineralPoint = value;
+}
+int Player::getMineralPoint()
+{
+    return mineralPoint;
+}
+void Player::increateMineralPoint()
+{
+    mineralPoint++;
+}
+bool Player::getVisionStatus() const
+{
+    return visionStatus;
+}
+void Player::setVisionStatus(bool value)
+{
+    visionStatus = value;
+}

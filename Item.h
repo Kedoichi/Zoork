@@ -23,19 +23,22 @@ public:
     void setRequireSearch(bool value);
     bool getRequireSearch() const;
 
-
     void setCollectable(bool value);
     bool getCollectable() const;
 
-    void decreaseDuration();
+    void setUseable(bool value);
+    bool getUseable() const;
+
     void setDuration(int value);
     int getDuration() const;
+    void decreaseDuration();
 
 protected:
     bool requireSearch;
     bool collectable;
     std::shared_ptr<Command> useCommand;
     int duration;
+    bool useAble;
 };
 
 #endif // ZOORK_ITEM_H
