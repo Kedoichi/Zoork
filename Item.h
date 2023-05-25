@@ -9,7 +9,8 @@
 #include "GameObject.h"
 #include "NullCommand.h"
 
-class Item : public GameObject {
+class Item : public GameObject
+{
 public:
     Item(const std::string &, const std::string &);
 
@@ -19,14 +20,25 @@ public:
 
     void setUseCommand(std::shared_ptr<Command>);
 
+    void setRequireSearch(bool value);
+    bool getRequireSearch() const;
 
+    void setCollectable(bool value);
+    bool getCollectable() const;
+
+    void setUseable(bool value);
+    bool getUseable() const;
+
+    void setDuration(int value);
     int getDuration() const;
-
     void decreaseDuration();
 
 protected:
+    bool requireSearch;
+    bool collectable;
     std::shared_ptr<Command> useCommand;
     int duration;
+    bool useAble;
 };
 
-#endif //ZOORK_ITEM_H
+#endif // ZOORK_ITEM_H

@@ -115,7 +115,10 @@ string Room::getDescription() const
         description += "Items in the room:\n";
         for (const auto &item : items)
         {
-            description += "- " + item->getName() + ": " + item->getDescription() + "\n";
+            if (item->getRequireSearch() == false)
+            {
+                description += "- " + item->getName() + ": " + item->getDescription() + "\n";
+            }
         }
     }
 
@@ -129,5 +132,24 @@ string Room::getDescription() const
         }
     }
 
+    return description;
+}
+
+string Room::search() const
+{
+    string description = "";
+
+    // Append items description
+    if (!items.empty())
+    {
+        description += "Items in the room:\n";
+        for (const auto &item : items)
+        {
+            if (item->getRequireSearch() == true)
+            {
+                description += "- " + item->getName() + ": " + item->getDescription() + "\n";
+            }
+        }
+    }
     return description;
 }

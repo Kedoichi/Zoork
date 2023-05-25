@@ -13,7 +13,8 @@
 #include <string>
 #include <vector>
 
-class ZOOrkEngine {
+class ZOOrkEngine
+{
 public:
     ZOOrkEngine(std::shared_ptr<Room>);
 
@@ -32,14 +33,17 @@ private:
     void handleDropCommand(std::vector<std::string>);
 
     void handleQuitCommand(std::vector<std::string>);
-    void handleTalkCommand(std::vector<std::string>& arguments);
+    void handleGatherCommand(std::vector<std::string>);
+    void handleSearchCommand();
+    void handleInventoryCommand();
+    void handleTalkCommand(std::vector<std::string> &arguments);
+    void handleATKCommand(std::vector<std::string> &arguments);
+    void handleUseCommand(std::vector<std::string> arguments);
+    int getRandomNumber(int min, int max);
 
-    
-
-    static std::vector<std::string> tokenizeString(const std::string&);
+    static std::vector<std::string> tokenizeString(const std::string &);
 
     static std::string makeLowercase(std::string);
 };
 
-
-#endif //ZOORK_ZOORKENGINE_H
+#endif // ZOORK_ZOORKENGINE_H

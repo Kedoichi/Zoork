@@ -14,6 +14,10 @@ ZOOrkEngine::ZOOrkEngine(std::shared_ptr<Room> start)
     player->setCurrentRoom(start.get());
     player->getCurrentRoom()->enter();
     player->setBackpack(false);
+    player->setBalance(100);
+    player->setDamage(0);
+    player->setHerbPoint(0);
+    player->setMineralPoint(0);
 }
 
 void ZOOrkEngine::run()
@@ -45,6 +49,10 @@ void ZOOrkEngine::run()
         {
             handleDropCommand(arguments);
         }
+        else if (command == "search")
+        {
+            handleSearchCommand();
+        }
         else if (command == "talk")
         {
             handleTalkCommand(arguments);
@@ -52,6 +60,18 @@ void ZOOrkEngine::run()
         else if (command == "quit")
         {
             handleQuitCommand(arguments);
+        }
+        else if (command == "use")
+        {
+            handleUseCommand(arguments);
+        }
+        else if (command == "gather")
+        {
+            handleGatherCommand(arguments);
+        }
+        else if (command == "inv" || command == "inventory")
+        {
+            handleInventoryCommand();
         }
         else
         {
@@ -127,6 +147,11 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments)
         }
     }
 }
+void ZOOrkEngine::handleSearchCommand()
+{
+    Room *currentRoom = player->getCurrentRoom();
+    std::cout << currentRoom->search() << std::endl;
+}
 
 void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments)
 {
@@ -167,6 +192,13 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments)
         return;
     }
 
+    // Is iteam collectable
+
+    if (item->getCollectable() == false)
+    {
+        std::cout << "You can't take that.\nThere must be a way to have it.";
+        return;
+    }
     // Add the item to the player's inventory
     player->addItem(item);
 
@@ -211,6 +243,23 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments)
     // Remove the item from the player's inventory
     player->removeItem(itemName);
 
+    std::cout << item->getName() << " removed.\n";
+
+    std::vector<Item *> inventory = player->getInventory();
+
+    if (inventory.empty())
+    {
+        std::cout << "Your inventory is empty.\n";
+    }
+    else
+    {
+        std::cout << "Inventory:\n";
+        for (Item *item : inventory)
+        {
+            std::cout << "- " << item->getName() << ": " << item->getDescription() << "\n";
+        }
+    }
+
     // Add the item to the current room's items
     player->getCurrentRoom()->addItem(item);
 
@@ -242,6 +291,26 @@ void ZOOrkEngine::handleTalkCommand(std::vector<std::string> &arguments)
 
     // Perform the talk action with the character
     character->talk();
+
+    // Check if the character is the Mysterious Stranger
+    if (characterName == "mysterious stranger")
+    {
+        // Check if the player has the hoe in their inventory
+        bool hasGlass = player->getVisionStatus();
+        if (!hasGlass)
+        {
+            // Give the hoe to the player
+            Item *vision = new Item("Mistic Glasses", "There are number on Character. Use examine command for a closer look!!!\nYou can see on the dark now");
+            std::cout << "The Mysterious Stranger gives you a Mistic Glasses.\n";
+            player->addItem(vision);
+            player->setVisionStatus(true);
+        }
+        else
+        {
+            std::cout << "You already have a Mistic Glasses.\n";
+        }
+        return;
+    }
 }
 
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments)
@@ -277,4 +346,124 @@ std::string ZOOrkEngine::makeLowercase(std::string input)
     std::transform(output.begin(), output.end(), output.begin(), ::tolower);
 
     return output;
+}
+
+void ZOOrkEngine::handleInventoryCommand()
+{
+    std::vector<Item *> inventory = player->getInventory();
+
+    if (inventory.empty())
+    {
+        std::cout << "Your inventory is empty.\n";
+    }
+    else
+    {
+        std::cout << "Inventory:\n";
+        for (Item *item : inventory)
+        {
+            std::cout << "- " << item->getName() << ": " << item->getDescription() << "\n";
+        }
+    }
+}
+void ZOOrkEngine::handleUseCommand(std::vector<std::string> arguments)
+{
+    if (arguments.empty())
+    {
+        std::cout << "Please specify the item you want to use.\n";
+        return;
+    }
+
+    std::string target = arguments[0];
+    for (size_t i = 1; i < arguments.size(); ++i)
+    {
+        target += " " + arguments[i];
+    }
+    std::string itemName = makeLowercase(target);
+
+    // Check if the player has the specified item in their inventory
+    Item *item = nullptr;
+    for (Item *playerItem : player->getInventory())
+    {
+        if (makeLowercase(playerItem->getName()) == itemName)
+        {
+            item = playerItem;
+            break;
+        }
+    }
+
+    if (item == nullptr)
+    {
+        std::cout << "You don't have a " << itemName << " in your inventory.\n";
+        return;
+    }
+
+    // Perform the use action of the item
+    item->use();
+}
+void ZOOrkEngine::handleGatherCommand(std::vector<std::string> arguments)
+{
+    if (arguments.empty())
+    {
+        std::cout << "Please specify the item you want to take.\n";
+        return;
+    }
+    std::string target = arguments[0];
+    for (size_t i = 1; i < arguments.size(); ++i)
+    {
+        target += " " + arguments[i];
+    }
+    std::string itemName = makeLowercase(target);
+
+    // Check if the current room has the specified item
+    Item *item = player->getCurrentRoom()->getItem(itemName);
+    if (item == nullptr)
+    {
+        std::cout << "There is no " << itemName << " here.\n";
+        return;
+    }
+
+    // Check player have tool ?
+
+    int quality;
+    if (itemName == "mineral")
+    {
+        Item *item = nullptr;
+        for (Item *playerItem : player->getInventory())
+        {
+            if (makeLowercase(playerItem->getName()) == "miner's pickaxe")
+            {
+                item = playerItem;
+                quality = getRandomNumber(1, 5);
+                player->changeMineralPoint(quality);
+                break;
+            }
+        }
+    }
+    if (itemName == "misteric herb")
+    {
+        Item *item = nullptr;
+        for (Item *playerItem : player->getInventory())
+        {
+            if (makeLowercase(playerItem->getName()) == "silver hoe")
+            {
+                item = playerItem;
+                quality = getRandomNumber(1, 5);
+                player->changeHerbPoint(quality);
+                break;
+            }
+        }
+    }
+
+    std::cout << "You have taken the " << quality << " x " << item->getName() << ".\n";
+}
+
+int ZOOrkEngine::getRandomNumber(int min, int max)
+{
+    // Providing a seed value
+    srand((unsigned)time(NULL));
+
+    // Get a random number
+    int random = rand() % (max - min + 1);
+
+    return random + min;
 }

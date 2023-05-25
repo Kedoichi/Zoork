@@ -38,20 +38,43 @@ public:
     int getInventorySize() const;
     bool backpackstatus() const;
     void setBackpack(bool value);
+
+    bool getVisionStatus() const;
+    void setVisionStatus(bool value);
+    void setBalance(int value);
+    int getBalance();
     void talk() override
     {
-        // Implement player's dialogue here
-        std::cout << getName() << ": \"Let's win this\"" << std::endl;
     }
+    void setHerbPoint(int value);
+    int getHerbPoint();
+    void changeHerbPoint(int value);
+    void setMineralPoint(int value);
+    int getMineralPoint();
+    void changeMineralPoint(int value);
+
+    void setDamage(int value);
+    int getDamage() const;
+    void setHealth(int value);
+    int getHealth();
+    void setAttackable(bool value);
+    bool getAttackable() const;
 
 private:
+    int balance, herbPoint, mineralPoint;
     bool backpackStatus;
+    bool hoeStatus;
+    bool visionStatus;
+
     std::vector<Item *> inventory;
     static Player *playerInstance;
     Room *currentRoom;
 
     Player() : Character("You", "You are a person, alike in dignity to any other, but uniquely you."),
                currentRoom(new NullRoom()) {}
+
+    int damage, health;
+    bool attackable;
 };
 
 #endif // ZOORK_PLAYER_H

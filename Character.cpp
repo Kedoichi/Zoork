@@ -3,5 +3,21 @@
 //
 
 #include "Character.h"
+#include <iostream>
 
 Character::Character(const std::string &n, const std::string &d) : GameObject(n, d) {}
+
+bool Character::upgrade(int currentPower, int material)
+{
+    std::cout << "I don't understand it.";
+    return false;
+}
+
+bool Character::getAttackable()
+{
+    return beAttackable;
+};
+void Character::setAttackable(bool value)
+{
+    beAttackable = value;
+};

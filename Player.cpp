@@ -14,6 +14,15 @@ bool Player::backpackstatus() const
 {
     return backpackStatus;
 }
+
+void Player::setBalance(int value)
+{
+    balance = value;
+}
+int Player::getBalance()
+{
+    return balance;
+}
 void Player::setBackpack(bool value)
 {
     backpackStatus = value;
@@ -38,12 +47,51 @@ void Player::addItem(Item *item)
 
 void Player::removeItem(const std::string &itemName)
 {
-    for (auto it = inventory.begin(); it != inventory.end(); ++it)
-    {
-        if ((*it)->getName() == itemName)
+    inventory.erase(std::remove_if(inventory.begin(), inventory.end(), [&](Item *item)
+                                   {
+        if (item->getName() == itemName)
         {
-            inventory.erase(it);
-            break;
+            delete item; // Delete the item object if necessary
+            return true; // Remove the item from the vector
         }
-    }
+        return false; }),
+                    inventory.end());
 }
+
+void Player::setHerbPoint(int value)
+{
+    herbPoint = value;
+}
+int Player::getHerbPoint()
+{
+    return herbPoint;
+}
+void Player::setMineralPoint(int value)
+{
+    mineralPoint = value;
+}
+int Player::getMineralPoint()
+{
+    return mineralPoint;
+}
+void Player::changeHerbPoint(int value)
+{
+    herbPoint = herbPoint + value;
+}
+void Player::changeMineralPoint(int value)
+{
+    mineralPoint = mineralPoint + value;
+}
+bool Player::getVisionStatus() const
+{
+    return visionStatus;
+}
+void Player::setVisionStatus(bool value)
+{
+    visionStatus = value;
+}
+
+void Player::setDamage(int value)
+{
+    damage = value;
+};
