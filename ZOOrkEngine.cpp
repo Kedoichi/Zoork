@@ -15,9 +15,9 @@ ZOOrkEngine::ZOOrkEngine(std::shared_ptr<Room> start)
     player->getCurrentRoom()->enter();
     player->setBackpack(false);
     player->setBalance(100);
-    player->setDamage(0);
     player->setHerbPoint(0);
     player->setMineralPoint(0);
+    player->updateStat();
 }
 
 void ZOOrkEngine::run()
@@ -61,13 +61,13 @@ void ZOOrkEngine::run()
         {
             handleQuitCommand(arguments);
         }
-        else if (command == "use")
-        {
-            handleUseCommand(arguments);
-        }
         else if (command == "gather")
         {
             handleGatherCommand(arguments);
+        }
+        else if (command == "give")
+        {
+            handleGiveCommand(arguments);
         }
         else if (command == "inv" || command == "inventory")
         {
@@ -206,6 +206,9 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments)
     player->getCurrentRoom()->removeItem(item->getName());
 
     std::cout << "You have taken the " << item->getName() << ".\n";
+
+    // Update stat;
+    player->updateStat();
 }
 
 void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments)
@@ -225,11 +228,16 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments)
 
     // Check if the player has the specified item in their inventory
     Item *item = nullptr;
-    for (Item *playerItem : player->getInventory())
+    int itemIndex = -1;
+
+    std::vector<Item *> &playerInventory = const_cast<std::vector<Item *> &>(player->getInventory());
+
+    for (size_t i = 0; i < playerInventory.size(); ++i)
     {
-        if (makeLowercase(playerItem->getName()) == itemName)
+        if (makeLowercase(playerInventory[i]->getName()) == itemName)
         {
-            item = playerItem;
+            item = playerInventory[i];
+            itemIndex = i;
             break;
         }
     }
@@ -241,11 +249,11 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments)
     }
 
     // Remove the item from the player's inventory
-    player->removeItem(itemName);
+    playerInventory.erase(playerInventory.begin() + itemIndex);
 
     std::cout << item->getName() << " removed.\n";
 
-    std::vector<Item *> inventory = player->getInventory();
+    const std::vector<Item *> &inventory = player->getInventory();
 
     if (inventory.empty())
     {
@@ -264,6 +272,9 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments)
     player->getCurrentRoom()->addItem(item);
 
     std::cout << "You have dropped the " << item->getName() << ".\n";
+
+    // Update stat;
+    player->updateStat();
 }
 
 void ZOOrkEngine::handleTalkCommand(std::vector<std::string> &arguments)
@@ -364,42 +375,15 @@ void ZOOrkEngine::handleInventoryCommand()
             std::cout << "- " << item->getName() << ": " << item->getDescription() << "\n";
         }
     }
+    // Print player stat
+    std::cout << "----------------------------------" << endl;
+    std::cout << "Balance: " << player->getBalance() << endl;
+    std::cout << "Strength: " << player->getStrengthStat() << endl;
+    std::cout << "Magic: " << player->getMagicStat() << endl;
+    std::cout << "Herb: " << player->getHerbPoint() << endl;
+    std::cout << "Mineral: " << player->getMineralPoint() << endl;
 }
-void ZOOrkEngine::handleUseCommand(std::vector<std::string> arguments)
-{
-    if (arguments.empty())
-    {
-        std::cout << "Please specify the item you want to use.\n";
-        return;
-    }
 
-    std::string target = arguments[0];
-    for (size_t i = 1; i < arguments.size(); ++i)
-    {
-        target += " " + arguments[i];
-    }
-    std::string itemName = makeLowercase(target);
-
-    // Check if the player has the specified item in their inventory
-    Item *item = nullptr;
-    for (Item *playerItem : player->getInventory())
-    {
-        if (makeLowercase(playerItem->getName()) == itemName)
-        {
-            item = playerItem;
-            break;
-        }
-    }
-
-    if (item == nullptr)
-    {
-        std::cout << "You don't have a " << itemName << " in your inventory.\n";
-        return;
-    }
-
-    // Perform the use action of the item
-    item->use();
-}
 void ZOOrkEngine::handleGatherCommand(std::vector<std::string> arguments)
 {
     if (arguments.empty())
@@ -425,32 +409,37 @@ void ZOOrkEngine::handleGatherCommand(std::vector<std::string> arguments)
     // Check player have tool ?
 
     int quality;
-    if (itemName == "mineral")
+    string toolRequire = item->getRequiredItem();
+
+    Item *tool = nullptr;
+    std::vector<Item *> &playerInventory = const_cast<std::vector<Item *> &>(player->getInventory());
+
+    for (size_t i = 0; i < playerInventory.size(); ++i)
     {
-        Item *item = nullptr;
-        for (Item *playerItem : player->getInventory())
+        if (playerInventory[i]->getName() == toolRequire)
         {
-            if (makeLowercase(playerItem->getName()) == "miner's pickaxe")
-            {
-                item = playerItem;
-                quality = getRandomNumber(1, 5);
-                player->changeMineralPoint(quality);
-                break;
-            }
+            tool = playerInventory[i];
+            break;
         }
     }
-    if (itemName == "misteric herb")
+
+    if (tool == nullptr)
     {
-        Item *item = nullptr;
-        for (Item *playerItem : player->getInventory())
+        std::cout << "You don't have a " << toolRequire << " in your inventory.\n";
+        return;
+    }
+    else
+    {
+
+        if (itemName == "mineral")
         {
-            if (makeLowercase(playerItem->getName()) == "silver hoe")
-            {
-                item = playerItem;
-                quality = getRandomNumber(1, 5);
-                player->changeHerbPoint(quality);
-                break;
-            }
+            quality = getRandomNumber(1, 5);
+            player->changeMineralPoint(quality);
+        }
+        if (itemName == "misteric herb")
+        {
+            quality = getRandomNumber(1, 5);
+            player->changeHerbPoint(quality);
         }
     }
 
@@ -464,6 +453,138 @@ int ZOOrkEngine::getRandomNumber(int min, int max)
 
     // Get a random number
     int random = rand() % (max - min + 1);
-
     return random + min;
+}
+
+void ZOOrkEngine::handleGiveCommand(std::vector<std::string> &arguments)
+{
+    if (arguments.empty())
+    {
+        std::cout << "Please specify the character you want to give to.\n";
+        return;
+    }
+
+    std::string target = arguments[0];
+    for (size_t i = 1; i < arguments.size(); ++i)
+    {
+        target += " " + arguments[i];
+    }
+    std::string characterName = makeLowercase(target);
+
+    // Check if the current room has the specified character
+    Character *character = player->getCurrentRoom()->getCharacter(characterName);
+    if (character == nullptr)
+    {
+        std::cout << "There is no " << characterName << " here.\n";
+        return;
+    }
+
+    // Init variable for logic
+    string currentTier = "", nextTier = "", itemType = "";
+    int point = 0, stat = 0;
+
+    // Check if the character is the Herbalist or Blacksmith
+    if (characterName == "herbalist")
+    {
+        // get stat and point
+        point = player->getHerbPoint();
+        stat = player->getMagicStat();
+
+        // 0 mean dont have anything 5 mean already got max level item
+        if (stat == 0)
+        {
+            cout << "You don't have the potion yet. Town Elder will show you where to get !!!\n";
+            return;
+        }
+        if (stat == 5)
+        {
+            cout << "You got the max level already";
+            return;
+        }
+
+        bool isSuccessFull = character->upgrade(stat, point);
+        if (isSuccessFull)
+        {
+            itemType = "Potion";
+            player->changeHerbPoint(-stat * 10);
+        }
+    }
+    else if (characterName == "blacksmith")
+    {
+        // get stat and point
+        point = player->getMineralPoint();
+        stat = player->getStrengthStat();
+
+        // 0 mean dont have anything 5 mean already got max level item
+        if (stat == 0)
+        {
+            cout << "You don't have the sword yet. Town Elder will show you where to get !!!\n";
+            return;
+        }
+        if (stat == 5)
+        {
+            cout << "You got the max level already";
+            return;
+        }
+
+        bool isSuccessFull = character->upgrade(stat, point);
+        if (isSuccessFull)
+        {
+            itemType = "Sword";
+            cout<<-stat * 10 << itemType;
+            player->changeMineralPoint(-stat * 10);
+        }
+    }
+    else
+    {
+        std::cout << "You can't give to this character.\n";
+        return;
+    }
+
+    // base on stat -> tier and item add|delete player inventory
+    // Starter -> Common -> Rare -> Epic -> Legendary
+
+    switch (stat)
+    {
+    case 1:
+        currentTier = "Starter";
+        nextTier = "Common";
+        break;
+    case 2:
+        currentTier = "Common";
+        nextTier = "Rare";
+        break;
+    case 3:
+        currentTier = "Rare";
+        nextTier = "Epic";
+        break;
+    case 4:
+        currentTier = "Epic";
+        nextTier = "Legendary";
+        break;
+    default:
+        break;
+    }
+
+    // Login within player's inventory
+    Item *item = nullptr;
+    int itemIndex = -1;
+
+    std::vector<Item *> &playerInventory = const_cast<std::vector<Item *> &>(player->getInventory());
+
+    for (size_t i = 0; i < playerInventory.size(); ++i)
+    {
+        if (playerInventory[i]->getName() == currentTier + " " + itemType)
+        {
+            item = playerInventory[i];
+            itemIndex = i;
+
+            // Remove the item from the player's inventory
+            playerInventory.erase(playerInventory.begin() + itemIndex);
+            Item *reward = player->getCurrentRoom()->getItem(nextTier + " " + itemType);
+            player->addItem(reward);
+            player->updateStat();
+            break;
+        }
+    }
 }

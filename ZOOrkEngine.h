@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Location.h"
 #include "Passage.h"
+#include "npc.h"
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -37,8 +38,8 @@ private:
     void handleSearchCommand();
     void handleInventoryCommand();
     void handleTalkCommand(std::vector<std::string> &arguments);
+    void handleGiveCommand(std::vector<std::string> &arguments);
     void handleATKCommand(std::vector<std::string> &arguments);
-    void handleUseCommand(std::vector<std::string> arguments);
     int getRandomNumber(int min, int max);
 
     static std::vector<std::string> tokenizeString(const std::string &);

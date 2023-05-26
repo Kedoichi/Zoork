@@ -62,3 +62,12 @@ void Item::setUseable(bool value)
     useAble = value;
 };
 bool Item::getUseable() const { return useAble; };
+void Item::setRequiredItem(const std::string &itemName)
+{
+    requiredItem = itemName;
+}
+
+std::string Item::getRequiredItem() const
+{
+    return requiredItem;
+}

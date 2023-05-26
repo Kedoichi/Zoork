@@ -127,10 +127,12 @@ int main()
     Item *mistericHerb = new Item("Misteric Herb", "It look strange. Better take it to Herbalist first");
     mistericHerb->setRequireSearch(true);
     mistericHerb->setCollectable(false);
+    mistericHerb->setRequiredItem(hoe->getName());
 
     Item *mineral = new Item("Mineral", "It look good for weapon. Let's bring it to Blacksmith");
     mineral->setRequireSearch(true);
     mineral->setCollectable(false);
+    mineral->setRequiredItem(minersPickaxe->getName());
 
     // Add items to room
 
@@ -144,6 +146,8 @@ int main()
     villageSquare->addItem(hoe);
     deeperForest->addItem(mistericHerb);
     abandonedMine->addItem(mineral);
+    start->addItem(mineral);
+    start->addItem(minersPickaxe);
 
     // add item to room theese item required upgrade to get
     villageSquare->addItem(sword2);
@@ -165,9 +169,10 @@ int main()
 
     // Set NPC locations
     start->addCharacter(&townElder);
-    behind_house->addCharacter(&herbalist);
+    villageSquare->addCharacter(&herbalist);
     villageSquare->addCharacter(&blacksmith);
     ancientRuin->addCharacter(&mysteriosStranger);
+    start->addCharacter(&blacksmith);
 #pragma endregion
     ZOOrkEngine zoork(start);
 

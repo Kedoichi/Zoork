@@ -26,7 +26,7 @@ protected:
     int move;
     int initiative;
     std::vector<std::string> dialogueOptions;
-    bool beAttackable=false;
+    bool beAttackable = false;
 };
 
 #endif // ZOORK_CHARACTER_H

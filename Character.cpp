@@ -7,7 +7,7 @@
 
 Character::Character(const std::string &n, const std::string &d) : GameObject(n, d) {}
 
-bool Character::upgrade(int currentPower, int material)
+bool Character::upgrade(int currentStat, int material)
 {
     std::cout << "I don't understand it.";
     return false;

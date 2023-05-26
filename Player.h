@@ -34,7 +34,8 @@ public:
     void removeItem(const std::string &);
     // Item *getItem(const std::string &);
     // Item *retrieveItem(const std::string &);
-    std::vector<Item *> getInventory() const;
+
+    const std::vector<Item *> &getInventory() const;
     int getInventorySize() const;
     bool backpackstatus() const;
     void setBackpack(bool value);
@@ -60,20 +61,25 @@ public:
     void setAttackable(bool value);
     bool getAttackable() const;
 
+    void updateStat();
+    int getMagicStat();
+    int getStrengthStat();
+
 private:
+    std::vector<Item *> inventory;
+
     int balance, herbPoint, mineralPoint;
     bool backpackStatus;
     bool hoeStatus;
     bool visionStatus;
 
-    std::vector<Item *> inventory;
     static Player *playerInstance;
     Room *currentRoom;
 
     Player() : Character("You", "You are a person, alike in dignity to any other, but uniquely you."),
                currentRoom(new NullRoom()) {}
 
-    int damage, health;
+    int strength, magic, health;
     bool attackable;
 };
 

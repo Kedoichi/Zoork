@@ -14,7 +14,7 @@ public:
         std::cout << "Player: \"Greetings, wise elder. Can you provide any guidance for my journey?\"" << std::endl;
         std::cout << "Town Elder: \"Ah, a brave adventurer! I sense your purpose. To uncover the secrets of this land, you must venture into the depths of the dungeon. Find the ancient relic hidden within its chambers.\"" << std::endl;
         std::cout << "Player: \"I accept this quest, noble elder. Is there anything else you can tell me?\"" << std::endl;
-        std::cout << "Town Elder: \"Indeed, young adventurer. Behind the house, there are som items that might help you in your journey.\"" << std::endl;
+        std::cout << "Town Elder: \"Indeed, young adventurer.I have this Sword and Potion overthere, take it with you. Also, behind the house, there are some items that might help you in your journey.\"" << std::endl;
         std::cout << "Player: \"Thank you for your guidance. I shall explore the dungeon and retrieve the ancient relic.\"" << std::endl;
         std::cout << "Town Elder: \"Oh! I forget.\nUse look/search command to see the item around and you can take/drop item.\"" << std::endl;
         std::cout << "Player: \"Thank you, wise elder.\"" << std::endl;
@@ -34,14 +34,17 @@ public:
         std::cout << "System: \"You can gather Herb by command \"gather\" !!!\"" << std::endl;
     }
 
-    bool upgrade(int currentPower, int material)
+    bool upgrade(int currentStat, int material)
     {
-        if (material >= currentPower*10){
-        std::cout << "Herbalist: \"Oh, you bring me good herb. Let me upgrade it for you.\"" << std::endl;
-        return true;}
-        else{
+        if (material >= currentStat * 10)
+        {
+            std::cout << "Herbalist: \"Oh, you bring me good herb. Let me upgrade it for you.\"" << std::endl;
+            return true;
+        }
+        else
+        {
             std::cout << "Herbalist: \"Hmm... Not enought. Try to get some more herb\"" << std::endl;
-            std::cout << "Herbalist: \"I need "<<currentPower*10<<" herbs\"" << std::endl;
+            std::cout << "Herbalist: \"I need " << currentStat * 10 << " herbs\"" << std::endl;
             return false;
         }
     }
@@ -59,14 +62,17 @@ public:
         std::cout << "Player: \"I shall choose wisely. Thank you for your craftsmanship.\"" << std::endl;
         std::cout << "System: \"You can gather mineral by command \"gather\" !!!\"" << std::endl;
     }
-    bool upgrade(int currentPower,int material)
+    bool upgrade(int currentStat, int material)
     {
-        if (material >= currentPower*10){
-        std::cout << "Blacksmith: \"Oh, you bring me good mineral. Let me upgrade it for you.\"" << std::endl;
-        return true;}
-        else{
+        if (material >= currentStat * 10)
+        {
+            std::cout << "Blacksmith: \"Oh, you bring me good mineral. Let me upgrade it for you.\"" << std::endl;
+            return true;
+        }
+        else
+        {
             std::cout << "Blacksmith: \"Hmm... Not enought. Try to get some more mineral\"" << std::endl;
-            std::cout << "Blacksmith: \"I need "<<currentPower*10<<" minerals\"" << std::endl;
+            std::cout << "Blacksmith: \"I need " << currentStat * 10 << " minerals\"" << std::endl;
             return false;
         }
     }
