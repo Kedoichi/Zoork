@@ -32,16 +32,14 @@ public:
     void setDuration(int value);
     int getDuration() const;
     void decreaseDuration();
-    
+
     void setRequiredItem(const std::string &itemName);
     std::string getRequiredItem() const;
 
 protected:
-    bool requireSearch;
-    bool collectable;
+    bool requireSearch = false;
+    bool collectable = true;
     std::shared_ptr<Command> useCommand;
-    int duration;
-    bool useAble;
     std::string requiredItem;
 };
 

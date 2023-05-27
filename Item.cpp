@@ -40,28 +40,6 @@ bool Item::getCollectable() const
     return collectable;
 }
 
-int Item::getDuration() const
-{
-    return duration;
-}
-void Item::setDuration(int value)
-{
-    duration = value;
-}
-
-void Item::decreaseDuration()
-{
-    if (duration > 0)
-    {
-        --duration;
-    }
-}
-
-void Item::setUseable(bool value)
-{
-    useAble = value;
-};
-bool Item::getUseable() const { return useAble; };
 void Item::setRequiredItem(const std::string &itemName)
 {
     requiredItem = itemName;

@@ -34,7 +34,7 @@ public:
         std::cout << "System: \"You can gather Herb by command \"gather\" !!!\"" << std::endl;
     }
 
-    bool upgrade(int currentStat, int material)
+    bool upgrade(int currentStat, int material) override
     {
         if (material >= currentStat * 10)
         {
@@ -62,7 +62,7 @@ public:
         std::cout << "Player: \"I shall choose wisely. Thank you for your craftsmanship.\"" << std::endl;
         std::cout << "System: \"You can gather mineral by command \"gather\" !!!\"" << std::endl;
     }
-    bool upgrade(int currentStat, int material)
+    bool upgrade(int currentStat, int material) override
     {
         if (material >= currentStat * 10)
         {

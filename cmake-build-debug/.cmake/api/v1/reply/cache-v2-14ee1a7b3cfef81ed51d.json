@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/rskarbez/CLionProjects/ZOOrk/cmake-build-debug"
+			"value" : "/Users/quocchic/Desktop/ZOOrk/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "23"
+			"value" : "25"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -92,6 +92,18 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "2"
+		},
+		{
+			"name" : "CMAKE_COLOR_DIAGNOSTICS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Enable colored diagnostics throughout."
+				}
+			],
+			"type" : "BOOL",
+			"value" : "ON"
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -458,6 +470,18 @@
 			"value" : ""
 		},
 		{
+			"name" : "CMAKE_FIND_PACKAGE_REDIRECTS_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake."
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/quocchic/Desktop/ZOOrk/cmake-build-debug/CMakeFiles/pkgRedirects"
+		},
+		{
 			"name" : "CMAKE_GENERATOR",
 			"properties" : 
 			[
@@ -515,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/rskarbez/CLionProjects/ZOOrk"
+			"value" : "/Users/quocchic/Desktop/ZOOrk"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -747,7 +771,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk"
+			"value" : "/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -839,7 +863,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23"
+			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1087,7 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/rskarbez/CLionProjects/ZOOrk/cmake-build-debug"
+			"value" : "/Users/quocchic/Desktop/ZOOrk/cmake-build-debug"
 		},
 		{
 			"name" : "ZOOrk_IS_TOP_LEVEL",
@@ -1111,7 +1135,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/rskarbez/CLionProjects/ZOOrk"
+			"value" : "/Users/quocchic/Desktop/ZOOrk"
 		}
 	],
 	"kind" : "cache",

@@ -58,12 +58,15 @@ public:
     int getDamage() const;
     void setHealth(int value);
     int getHealth();
+    void changeHealthPoint(int value);
     void setAttackable(bool value);
     bool getAttackable() const;
 
     void updateStat();
     int getMagicStat();
     int getStrengthStat();
+    void setMagicStat(int value);
+    void setStrengthStat(int value);
 
 private:
     std::vector<Item *> inventory;

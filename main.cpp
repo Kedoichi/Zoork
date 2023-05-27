@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Room.h"
 #include "npc.h"
+#include "mob.h"
 #include "ZOOrkEngine.h"
 
 int main()
@@ -61,67 +62,19 @@ int main()
     // test->setUseCommand(testCommand);
 
     Item *backpack = new Item("Backpack", "A tool used for store items.");
-    backpack->setRequireSearch(false);
     Item *torch = new Item("Torch", "A burning torch to light your way.");
-    torch->setRequireSearch(false);
     Item *crowbar = new Item("Crowbar", "A sturdy crowbar for prying things open.");
-    crowbar->setRequireSearch(false);
     Item *compass = new Item("Compass", "A navigational tool for finding direction.");
-    compass->setRequireSearch(false);
 
     // Item for gameplay
     // Sword
-    Item *sword1 = new Item("Starter Sword", "A basic sword for beginners.");
-    sword1->setRequireSearch(false);
-    sword1->setCollectable(true);
-
-    Item *sword2 = new Item("Common Sword", "A reliable sword commonly found in the realm.");
-    sword2->setRequireSearch(false);
-    sword2->setCollectable(false);
-
-    Item *sword3 = new Item("Rare Sword", "A rare and powerful sword sought after by adventurers.");
-    sword3->setRequireSearch(false);
-    sword3->setCollectable(false);
-
-    Item *sword4 = new Item("Epic Sword", "An epic sword with legendary qualities, capable of slaying powerful foes.");
-    sword4->setRequireSearch(false);
-    sword4->setCollectable(false);
-
-    Item *sword5 = new Item("Legendary Sword", "A legendary sword of immense power, rumored to have been forged by the gods themselves.");
-    sword5->setRequireSearch(false);
-    sword5->setCollectable(false);
+    Item *sword = new Item("Sword", "With this you can attacke enemy.");
 
     // Potions
-    Item *potion1 = new Item("Starter Potion", "A basic potion to restore a small amount of health.");
-    potion1->setRequireSearch(false);
-    potion1->setCollectable(true);
-
-    Item *potion2 = new Item("Common Potion", "A common potion that replenishes moderate health.");
-    potion2->setRequireSearch(false);
-    potion2->setCollectable(false);
-
-    Item *potion3 = new Item("Rare Potion", "A rare potion known for its potent healing properties.");
-    potion3->setRequireSearch(false);
-    potion3->setCollectable(false);
-
-    Item *potion4 = new Item("Epic Potion", "An epic potion that can fully restore health and provide temporary boosts.");
-    potion4->setRequireSearch(false);
-    potion4->setCollectable(false);
-
-    Item *potion5 = new Item("Legendary Potion", "A legendary elixir said to grant immortality, healing all wounds and bestowing great power.");
-    potion5->setRequireSearch(false);
-    potion5->setCollectable(false);
-
+    Item *potion = new Item("Potion", "With this you can heal in battle.");
     // Functional items
     Item *minersPickaxe = new Item("Miner's Pickaxe", "A sturdy pickaxe used for mining.");
-    minersPickaxe->setRequireSearch(false);
-    minersPickaxe->setCollectable(true);
-    minersPickaxe->setDuration(10);
-
     Item *hoe = new Item("Silver Hoe", "Special tool to collect herbs");
-    hoe->setRequireSearch(false);
-    hoe->setCollectable(true);
-    hoe->setDuration(10);
 
     // Tool required to collect item
     Item *mistericHerb = new Item("Misteric Herb", "It look strange. Better take it to Herbalist first");
@@ -136,8 +89,8 @@ int main()
 
     // Add items to room
 
-    start->addItem(sword1);
-    start->addItem(potion1);
+    start->addItem(sword);
+    start->addItem(potion);
     behind_house->addItem(torch);
     behind_house->addItem(backpack);
     behind_house->addItem(crowbar);
@@ -146,18 +99,6 @@ int main()
     villageSquare->addItem(hoe);
     deeperForest->addItem(mistericHerb);
     abandonedMine->addItem(mineral);
-    start->addItem(mineral);
-    start->addItem(minersPickaxe);
-
-    // add item to room theese item required upgrade to get
-    villageSquare->addItem(sword2);
-    villageSquare->addItem(potion2);
-    villageSquare->addItem(sword3);
-    villageSquare->addItem(potion3);
-    villageSquare->addItem(sword4);
-    villageSquare->addItem(potion4);
-    villageSquare->addItem(sword5);
-    villageSquare->addItem(potion5);
 
 #pragma endregion
 
@@ -172,7 +113,58 @@ int main()
     villageSquare->addCharacter(&herbalist);
     villageSquare->addCharacter(&blacksmith);
     ancientRuin->addCharacter(&mysteriosStranger);
-    start->addCharacter(&blacksmith);
+#pragma endregion
+
+#pragma region MOB
+    ForestImp forestImp;
+    FungalShaman fungalShaman;
+    DarkWoodNymph darkWoodNymph;
+    Goblin goblin;
+    RockGolem rockGolem;
+    AncientGuardian ancientGuardian;
+
+    forestImp.setHealth(30);
+    forestImp.setAttack(10);
+    forestImp.setLevel(1);
+    forestImp.setAttackable(true);
+    forestImp.setRewardType("Herb");
+    fungalShaman.setHealth(40);
+    fungalShaman.setAttack(20);
+    fungalShaman.setLevel(2);
+    fungalShaman.setAttackable(true);
+    fungalShaman.setRewardType("Herb");
+    darkWoodNymph.setHealth(60);
+    darkWoodNymph.setAttack(35);
+    darkWoodNymph.setLevel(3);
+    darkWoodNymph.setAttackable(true);
+    darkWoodNymph.setRewardType("Herb");
+
+    goblin.setHealth(30);
+    goblin.setAttack(10);
+    goblin.setLevel(1);
+    goblin.setAttackable(true);
+    goblin.setRewardType("Mineral");
+    rockGolem.setHealth(60);
+    rockGolem.setAttack(15);
+    rockGolem.setLevel(2);
+    rockGolem.setAttackable(true);
+    rockGolem.setRewardType("Mineral");
+    ancientGuardian.setHealth(100);
+    ancientGuardian.setAttack(20);
+    ancientGuardian.setLevel(3);
+    ancientGuardian.setAttackable(true);
+    ancientGuardian.setRewardType("Mineral");
+
+    // add to map
+    deeperForest->addCharacter(&forestImp);
+    deeperForest->addCharacter(&fungalShaman);
+    ancientRuin->addCharacter(&fungalShaman);
+    enchantedForest->addCharacter(&darkWoodNymph);
+
+    abandonedMine->addCharacter(&goblin);
+    abandonedMine->addCharacter(&rockGolem);
+    dungeon->addCharacter(&rockGolem);
+    dungeon->addCharacter(&ancientGuardian);
 #pragma endregion
     ZOOrkEngine zoork(start);
 

@@ -103,71 +103,7 @@ void Player::setVisionStatus(bool value)
 {
     visionStatus = value;
 }
-void Player::updateStat()
-{
-    int swordLevel = 0;  // Default base damage level
-    int potionLevel = 0; // Default base potion level
 
-    // Iterate over the player's inventory
-    for (Item *item : inventory)
-    {
-        std::string itemName = item->getName();
-        std::string lastWord = itemName.substr(itemName.find_last_of(' ') + 1);
-        if (lastWord == "Sword")
-        {
-            if (item->getName() == "Starter Sword")
-            {
-                swordLevel = 1;
-            }
-            if (item->getName() == "Common Sword")
-            {
-                swordLevel = 2;
-            }
-            if (item->getName() == "Rare Sword")
-            {
-                swordLevel = 3;
-            }
-            if (item->getName() == "Epic Sword")
-            {
-                swordLevel = 4;
-            }
-            if (item->getName() == "Legendary Sword")
-            {
-                swordLevel = 5;
-            }
-
-            std::cout << "\"Your strength change from " << strength << " -> " << swordLevel << " !!!\"\n";
-            strength = swordLevel;
-        }
-        if (lastWord == "Potion")
-        {
-            if (item->getName() == "Starter Potion")
-            {
-                potionLevel = 1;
-            }
-            else if (item->getName() == "Common Potion")
-            {
-                potionLevel = 2;
-            }
-            else if (item->getName() == "Rare Potion")
-            {
-                potionLevel = 3;
-            }
-            else if (item->getName() == "Epic Potion")
-            {
-                potionLevel = 4;
-                ;
-            }
-            else if (item->getName() == "Legendary Potion")
-            {
-                potionLevel = 5;
-            }
-            
-            std::cout << "\"Your magic change from " << magic << " -> " << potionLevel << " !!!\"\n";
-            magic = potionLevel;
-        }
-    }
-}
 int Player::getMagicStat()
 {
     return magic;
@@ -176,3 +112,15 @@ int Player::getStrengthStat()
 {
     return strength;
 }
+int Player::getHealth()
+{
+    return health;
+}
+void Player::changeHealthPoint(int value)
+{
+    health = health + value;
+}
+
+void Player::setMagicStat(int value) { magic = value; };
+void Player::setStrengthStat(int value) { strength = value; };
+void Player::setHealth(int value) { health = value; };

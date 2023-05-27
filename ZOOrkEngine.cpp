@@ -17,7 +17,9 @@ ZOOrkEngine::ZOOrkEngine(std::shared_ptr<Room> start)
     player->setBalance(100);
     player->setHerbPoint(0);
     player->setMineralPoint(0);
-    player->updateStat();
+    player->setHealth(100);
+    player->setStrengthStat(0);
+    player->setMagicStat(0);
 }
 
 void ZOOrkEngine::run()
@@ -68,6 +70,10 @@ void ZOOrkEngine::run()
         else if (command == "give")
         {
             handleGiveCommand(arguments);
+        }
+        else if (command == "battle" || command == "bt")
+        {
+            handleBattleCommand(arguments);
         }
         else if (command == "inv" || command == "inventory")
         {
@@ -208,7 +214,14 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments)
     std::cout << "You have taken the " << item->getName() << ".\n";
 
     // Update stat;
-    player->updateStat();
+    if (itemName == "sword")
+    {
+        player->setStrengthStat(1);
+    }
+    if (itemName == "potion")
+    {
+        player->setMagicStat(1);
+    }
 }
 
 void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments)
@@ -272,9 +285,6 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments)
     player->getCurrentRoom()->addItem(item);
 
     std::cout << "You have dropped the " << item->getName() << ".\n";
-
-    // Update stat;
-    player->updateStat();
 }
 
 void ZOOrkEngine::handleTalkCommand(std::vector<std::string> &arguments)
@@ -377,6 +387,7 @@ void ZOOrkEngine::handleInventoryCommand()
     }
     // Print player stat
     std::cout << "----------------------------------" << endl;
+    std::cout << "Health: " << player->getHealth() << endl;
     std::cout << "Balance: " << player->getBalance() << endl;
     std::cout << "Strength: " << player->getStrengthStat() << endl;
     std::cout << "Magic: " << player->getMagicStat() << endl;
@@ -481,7 +492,8 @@ void ZOOrkEngine::handleGiveCommand(std::vector<std::string> &arguments)
 
     // Init variable for logic
     string currentTier = "", nextTier = "", itemType = "";
-    int point = 0, stat = 0;
+    int point, stat;
+    bool isSuccessFull;
 
     // Check if the character is the Herbalist or Blacksmith
     if (characterName == "herbalist")
@@ -493,21 +505,22 @@ void ZOOrkEngine::handleGiveCommand(std::vector<std::string> &arguments)
         // 0 mean dont have anything 5 mean already got max level item
         if (stat == 0)
         {
-            cout << "You don't have the potion yet. Town Elder will show you where to get !!!\n";
+            std::cout << "You don't have the potion yet. Town Elder will show you where to get !!!\n";
             return;
         }
         if (stat == 5)
         {
-            cout << "You got the max level already";
+            std::cout << "You got the max level already";
             return;
         }
 
-        bool isSuccessFull = character->upgrade(stat, point);
-        if (isSuccessFull)
+        isSuccessFull = character->upgrade(stat, point);
+        if (!isSuccessFull)
         {
-            itemType = "Potion";
-            player->changeHerbPoint(-stat * 10);
+            return;
         }
+        player->changeHerbPoint(-stat * 10);
+        player->setMagicStat(stat++);
     }
     else if (characterName == "blacksmith")
     {
@@ -518,22 +531,22 @@ void ZOOrkEngine::handleGiveCommand(std::vector<std::string> &arguments)
         // 0 mean dont have anything 5 mean already got max level item
         if (stat == 0)
         {
-            cout << "You don't have the sword yet. Town Elder will show you where to get !!!\n";
+            std::cout << "You don't have the sword yet. Town Elder will show you where to get !!!\n";
             return;
         }
         if (stat == 5)
         {
-            cout << "You got the max level already";
+            std::cout << "You got the max level already";
             return;
         }
 
-        bool isSuccessFull = character->upgrade(stat, point);
-        if (isSuccessFull)
+        isSuccessFull = character->upgrade(stat, point);
+        if (!isSuccessFull)
         {
-            itemType = "Sword";
-            cout<<-stat * 10 << itemType;
-            player->changeMineralPoint(-stat * 10);
+            return;
         }
+        player->changeMineralPoint(-stat * 10);
+        player->setStrengthStat(stat + 1);
     }
     else
     {
@@ -541,50 +554,128 @@ void ZOOrkEngine::handleGiveCommand(std::vector<std::string> &arguments)
         return;
     }
 
-    // base on stat -> tier and item add|delete player inventory
-    // Starter -> Common -> Rare -> Epic -> Legendary
+    std::cout << "Sucessfull !!! use inventory command to check your stats." << endl;
+}
 
-    switch (stat)
+void ZOOrkEngine::handleBattleCommand(std::vector<std::string> &arguments)
+{
+    if (arguments.empty())
     {
-    case 1:
-        currentTier = "Starter";
-        nextTier = "Common";
-        break;
-    case 2:
-        currentTier = "Common";
-        nextTier = "Rare";
-        break;
-    case 3:
-        currentTier = "Rare";
-        nextTier = "Epic";
-        break;
-    case 4:
-        currentTier = "Epic";
-        nextTier = "Legendary";
-        break;
-    default:
-        break;
+        std::cout << "Please specify the character you want to attack.\n";
+        return;
     }
 
-    // Login within player's inventory
-    Item *item = nullptr;
-    int itemIndex = -1;
-
-    std::vector<Item *> &playerInventory = const_cast<std::vector<Item *> &>(player->getInventory());
-
-    for (size_t i = 0; i < playerInventory.size(); ++i)
+    std::string target = arguments[0];
+    for (size_t i = 1; i < arguments.size(); ++i)
     {
-        if (playerInventory[i]->getName() == currentTier + " " + itemType)
-        {
-            item = playerInventory[i];
-            itemIndex = i;
+        target += " " + arguments[i];
+    }
+    std::string characterName = makeLowercase(target);
 
-            // Remove the item from the player's inventory
-            playerInventory.erase(playerInventory.begin() + itemIndex);
-            Item *reward = player->getCurrentRoom()->getItem(nextTier + " " + itemType);
-            player->addItem(reward);
-            player->updateStat();
+    // Check if the current room has the specified character
+    Character *character = player->getCurrentRoom()->getCharacter(characterName);
+    if (character == nullptr)
+    {
+        std::cout << "There is no " << characterName << " here.\n";
+        return;
+    }
+
+    if (!character->getAttackable())
+    {
+        std::cout << "You can't attack this character.\n";
+        return;
+    }
+
+    // init variable for battle
+    //  the battle is turn base. each turn player can choose to
+    // 1:atk 2:heal 3:run
+    //  if player choose to atk, the player will deal damage to the enemy
+    // base on the strength of player.
+    //  if player choose to heal, the player will heal base on the magic of player
+    //  if player choose to run, the player will have potential chance to run away base on lv of mob
+
+    int playerHP, playerStrength, playerMagic;
+    int mobHP, mobAtkStat, mobLevel;
+    int action, randomValue, reward;
+
+    playerHP = player->getHealth();
+    playerStrength = player->getStrengthStat();
+    playerMagic = player->getMagicStat();
+
+    mobHP = character->getHealth();
+    mobAtkStat = character->getAttack();
+    mobLevel = character->getLevel();
+
+    // using do while to ask player action each turn
+    do
+    {
+        cout << "Choose action\n1: Attack\n2: Heal\n3: Run" << endl
+             << "--";
+        cin >> action;
+
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the input buffer
+        switch (action)
+        {
+        case 1:
+            // player atk
+            randomValue = getRandomNumber(playerStrength * 8, playerStrength * 13);
+            mobHP -= randomValue;
+            cout << "You deal " << randomValue << " damage to " << characterName << endl;
+            break;
+        case 2:
+            // player heal
+            randomValue = getRandomNumber(playerMagic * 5, playerMagic * 15);
+
+            playerHP += randomValue;
+            cout << "You heal " << randomValue << " HP" << endl;
+            player->setHealth(playerHP += randomValue);
+            break;
+        case 3:
+            // player run
+            if (getRandomNumber(1, 5) > mobLevel)
+            {
+                cout << "You run away" << endl;
+                return;
+            }
+            else
+            {
+                cout << "You can't run away" << endl;
+            }
+            break;
+        default:
+            cout << "Please choose the correct action" << endl;
             break;
         }
-    }
+
+        if (mobHP >= 0)
+        {
+            // mob atk
+            randomValue = getRandomNumber(mobAtkStat * 0.8, mobAtkStat * 1.3);
+            playerHP -= randomValue;
+            player->setHealth(playerHP);
+            cout << characterName << " deal " << randomValue << " damage to you" << endl;
+        }
+        else
+        {
+            cout << "You win" << endl;
+            reward = getRandomNumber(mobLevel * 2, mobLevel * 10);
+            if (character->getRewardType() == "Herb")
+            {
+                player->changeHerbPoint(reward);
+            }
+            if (character->getRewardType() == "Mineral")
+            {
+                player->changeMineralPoint(reward);
+            }
+
+            cout << "You have recieve " << reward << " " << character->getRewardType() << " !!!\n";
+        }
+
+        if (playerHP <= 0)
+        {
+            cout << "You lose" << endl;
+            cout << "Try again mate" << endl;
+            gameOver = true;
+        }
+    } while (playerHP > 0 and mobHP > 0);
 }

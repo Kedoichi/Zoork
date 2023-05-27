@@ -24,7 +24,6 @@ public:
 private:
     bool gameOver = false;
     Player *player;
-
     void handleGoCommand(std::vector<std::string>);
 
     void handleLookCommand(std::vector<std::string>);
@@ -39,7 +38,7 @@ private:
     void handleInventoryCommand();
     void handleTalkCommand(std::vector<std::string> &arguments);
     void handleGiveCommand(std::vector<std::string> &arguments);
-    void handleATKCommand(std::vector<std::string> &arguments);
+    void handleBattleCommand(std::vector<std::string> &arguments);
     int getRandomNumber(int min, int max);
 
     static std::vector<std::string> tokenizeString(const std::string &);
