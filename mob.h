@@ -44,10 +44,10 @@ public:
     AncientGuardian() : Character("Ancient Guardian", "A colossal golem-like entity that protects ancient ruins. Its body is adorned with ancient symbols and gemstones.") {}
     void talk() override{};
 };
-class Dragon : public Character
+class AncientDragon : public Character
 {
 public:
-    Dragon() : Character("Dragon", "A fearsome creature of legend with fiery breath, tough scales, and piercing gaze.") {}
+    AncientDragon() : Character("Ancient Dragon", "A fearsome creature of legend with fiery breath, tough scales, and piercing gaze.") {}
     void talk() override{};
 };
 

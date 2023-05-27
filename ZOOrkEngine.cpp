@@ -202,7 +202,7 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments)
 
     if (item->getCollectable() == false)
     {
-        std::cout << "You can't take that.\nThere must be a way to have it.";
+        std::cout << "--You can't take that.--\nThere must be a way to have it.\n";
         return;
     }
     // Add the item to the player's inventory
@@ -510,7 +510,7 @@ void ZOOrkEngine::handleGiveCommand(std::vector<std::string> &arguments)
         }
         if (stat == 5)
         {
-            std::cout << "You got the max level already";
+            std::cout << "You got the max level already\n";
             return;
         }
 
@@ -520,7 +520,7 @@ void ZOOrkEngine::handleGiveCommand(std::vector<std::string> &arguments)
             return;
         }
         player->changeHerbPoint(-stat * 10);
-        player->setMagicStat(stat++);
+        player->setMagicStat(stat + 1);
     }
     else if (characterName == "blacksmith")
     {
@@ -536,7 +536,7 @@ void ZOOrkEngine::handleGiveCommand(std::vector<std::string> &arguments)
         }
         if (stat == 5)
         {
-            std::cout << "You got the max level already";
+            std::cout << "You got the max level already\n";
             return;
         }
 
@@ -595,6 +595,7 @@ void ZOOrkEngine::handleBattleCommand(std::vector<std::string> &arguments)
     //  if player choose to run, the player will have potential chance to run away base on lv of mob
 
     int playerHP, playerStrength, playerMagic;
+    std::string mobName;
     int mobHP, mobAtkStat, mobLevel;
     int action, randomValue, reward;
 
@@ -602,6 +603,7 @@ void ZOOrkEngine::handleBattleCommand(std::vector<std::string> &arguments)
     playerStrength = player->getStrengthStat();
     playerMagic = player->getMagicStat();
 
+    mobName = character->getName();
     mobHP = character->getHealth();
     mobAtkStat = character->getAttack();
     mobLevel = character->getLevel();
@@ -620,7 +622,7 @@ void ZOOrkEngine::handleBattleCommand(std::vector<std::string> &arguments)
             // player atk
             randomValue = getRandomNumber(playerStrength * 8, playerStrength * 13);
             mobHP -= randomValue;
-            cout << "You deal " << randomValue << " damage to " << characterName << endl;
+            cout << "You deal " << randomValue << " damage to " << mobName << endl;
             break;
         case 2:
             // player heal
@@ -647,18 +649,18 @@ void ZOOrkEngine::handleBattleCommand(std::vector<std::string> &arguments)
             break;
         }
 
-        if (mobHP >= 0)
+        if (mobHP > 0)
         {
             // mob atk
             randomValue = getRandomNumber(mobAtkStat * 0.8, mobAtkStat * 1.3);
             playerHP -= randomValue;
             player->setHealth(playerHP);
-            cout << characterName << " deal " << randomValue << " damage to you" << endl;
+            cout << mobName << " deal " << randomValue << " damage to you" << endl;
         }
         else
         {
             cout << "You win" << endl;
-            reward = getRandomNumber(mobLevel * 2, mobLevel * 10);
+            reward = getRandomNumber(mobLevel * 5, mobLevel * 15);
             if (character->getRewardType() == "Herb")
             {
                 player->changeHerbPoint(reward);
@@ -676,6 +678,16 @@ void ZOOrkEngine::handleBattleCommand(std::vector<std::string> &arguments)
             cout << "You lose" << endl;
             cout << "Try again mate" << endl;
             gameOver = true;
+            return;
         }
+        if (mobName == "Ancient Dragon")
+        {
+            cout << "You win" << endl;
+            cout << "Congratulation you have finish the game" << endl;
+            gameOver = true;
+            return;
+        }
+
+        cout << "Player HP: " << playerHP << "  |  " << mobName << " HP: " << mobHP << endl;
     } while (playerHP > 0 and mobHP > 0);
 }

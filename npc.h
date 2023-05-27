@@ -78,17 +78,4 @@ public:
     }
 };
 
-class MysteriousStranger : public Character
-{
-public:
-    MysteriousStranger() : Character("Mysterious Stranger", "A cloaked figure lurking in the shadows of the ancient ruin.") {}
-
-    void talk() override
-    {
-        std::cout << "Player: \"Greetings, mysterious stranger. What secrets do you hold in this ancient ruin?\"" << std::endl;
-        std::cout << "Mysterious Stranger: \"You seek answers, do you not? There are dangerous creatures lurking within the depths of this mine.\nTake these glasses to see their hidden stats and help you survive in there..\"" << std::endl;
-        std::cout << "Player: \"I am grateful for your warning and the glasses. I shall proceed with caution.\"" << std::endl;
-    }
-};
-
 #endif // NPC_H

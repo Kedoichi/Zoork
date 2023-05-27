@@ -106,13 +106,11 @@ int main()
     TownElder townElder;
     Herbalist herbalist;
     Blacksmith blacksmith;
-    MysteriousStranger mysteriosStranger;
 
     // Set NPC locations
     start->addCharacter(&townElder);
     villageSquare->addCharacter(&herbalist);
     villageSquare->addCharacter(&blacksmith);
-    ancientRuin->addCharacter(&mysteriosStranger);
 #pragma endregion
 
 #pragma region MOB
@@ -122,6 +120,7 @@ int main()
     Goblin goblin;
     RockGolem rockGolem;
     AncientGuardian ancientGuardian;
+    AncientDragon ancientDragon;
 
     forestImp.setHealth(30);
     forestImp.setAttack(10);
@@ -155,6 +154,12 @@ int main()
     ancientGuardian.setAttackable(true);
     ancientGuardian.setRewardType("Mineral");
 
+    ancientDragon.setHealth(200);
+    ancientDragon.setAttack(30);
+    ancientDragon.setLevel(4);
+    ancientDragon.setAttackable(true);
+    ancientDragon.setRewardType("Mineral");
+
     // add to map
     deeperForest->addCharacter(&forestImp);
     deeperForest->addCharacter(&fungalShaman);
@@ -165,6 +170,7 @@ int main()
     abandonedMine->addCharacter(&rockGolem);
     dungeon->addCharacter(&rockGolem);
     dungeon->addCharacter(&ancientGuardian);
+    dungeon->addCharacter(&ancientDragon);
 #pragma endregion
     ZOOrkEngine zoork(start);
 
