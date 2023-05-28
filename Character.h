@@ -34,7 +34,6 @@ protected:
     int attack;
     int level;
     std::string rewardType;
-    std::vector<std::string> dialogueOptions;
     bool beAttackable = false;
 };
 

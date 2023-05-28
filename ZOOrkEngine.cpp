@@ -599,6 +599,9 @@ void ZOOrkEngine::handleBattleCommand(std::vector<std::string> &arguments)
     int mobHP, mobAtkStat, mobLevel;
     int action, randomValue, reward;
 
+    // Set Defaut HP - use to limit heal function
+    int defautlHP = 100;
+
     playerHP = player->getHealth();
     playerStrength = player->getStrengthStat();
     playerMagic = player->getMagicStat();
@@ -627,6 +630,11 @@ void ZOOrkEngine::handleBattleCommand(std::vector<std::string> &arguments)
         case 2:
             // player heal
             randomValue = getRandomNumber(playerMagic * 5, playerMagic * 15);
+
+            if (playerHP + randomValue >= defautlHP + (playerMagic - 1) * 25)
+            {
+                randomValue = defautlHP + (playerMagic - 1) * 25 - playerHP;
+            }
 
             playerHP += randomValue;
             cout << "You heal " << randomValue << " HP" << endl;

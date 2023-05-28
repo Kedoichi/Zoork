@@ -40,6 +40,7 @@ bool Item::getCollectable() const
     return collectable;
 }
 
+
 void Item::setRequiredItem(const std::string &itemName)
 {
     requiredItem = itemName;

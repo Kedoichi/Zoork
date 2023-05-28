@@ -26,13 +26,6 @@ public:
     void setCollectable(bool value);
     bool getCollectable() const;
 
-    void setUseable(bool value);
-    bool getUseable() const;
-
-    void setDuration(int value);
-    int getDuration() const;
-    void decreaseDuration();
-
     void setRequiredItem(const std::string &itemName);
     std::string getRequiredItem() const;
 
