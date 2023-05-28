@@ -34,24 +34,56 @@ public:
     void removeItem(const std::string &);
     // Item *getItem(const std::string &);
     // Item *retrieveItem(const std::string &);
-    std::vector<Item *> getInventory() const;
+
+    const std::vector<Item *> &getInventory() const;
     int getInventorySize() const;
     bool backpackstatus() const;
     void setBackpack(bool value);
+
+    bool getVisionStatus() const;
+    void setVisionStatus(bool value);
+    void setBalance(int value);
+    int getBalance();
     void talk() override
     {
-        // Implement player's dialogue here
-        std::cout << getName() << ": \"Let's win this\"" << std::endl;
     }
+    void setHerbPoint(int value);
+    int getHerbPoint();
+    void changeHerbPoint(int value);
+    void setMineralPoint(int value);
+    int getMineralPoint();
+    void changeMineralPoint(int value);
+
+    void setDamage(int value);
+    int getDamage() const;
+    void setHealth(int value);
+    int getHealth();
+    void changeHealthPoint(int value);
+    void setAttackable(bool value);
+    bool getAttackable() const;
+
+    void updateStat();
+    int getMagicStat();
+    int getStrengthStat();
+    void setMagicStat(int value);
+    void setStrengthStat(int value);
 
 private:
-    bool backpackStatus;
     std::vector<Item *> inventory;
+
+    int balance, herbPoint, mineralPoint;
+    bool backpackStatus;
+    bool hoeStatus;
+    bool visionStatus;
+
     static Player *playerInstance;
     Room *currentRoom;
 
     Player() : Character("You", "You are a person, alike in dignity to any other, but uniquely you."),
                currentRoom(new NullRoom()) {}
+
+    int strength, magic, health;
+    bool attackable;
 };
 
 #endif // ZOORK_PLAYER_H

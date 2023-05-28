@@ -8,12 +8,14 @@
 #include "Player.h"
 #include "Location.h"
 #include "Passage.h"
+#include "npc.h"
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
 
-class ZOOrkEngine {
+class ZOOrkEngine
+{
 public:
     ZOOrkEngine(std::shared_ptr<Room>);
 
@@ -22,7 +24,6 @@ public:
 private:
     bool gameOver = false;
     Player *player;
-
     void handleGoCommand(std::vector<std::string>);
 
     void handleLookCommand(std::vector<std::string>);
@@ -32,14 +33,17 @@ private:
     void handleDropCommand(std::vector<std::string>);
 
     void handleQuitCommand(std::vector<std::string>);
-    void handleTalkCommand(std::vector<std::string>& arguments);
+    void handleGatherCommand(std::vector<std::string>);
+    void handleSearchCommand();
+    void handleInventoryCommand();
+    void handleTalkCommand(std::vector<std::string> &arguments);
+    void handleGiveCommand(std::vector<std::string> &arguments);
+    void handleBattleCommand(std::vector<std::string> &arguments);
+    int getRandomNumber(int min, int max);
 
-    
-
-    static std::vector<std::string> tokenizeString(const std::string&);
+    static std::vector<std::string> tokenizeString(const std::string &);
 
     static std::string makeLowercase(std::string);
 };
 
-
-#endif //ZOORK_ZOORKENGINE_H
+#endif // ZOORK_ZOORKENGINE_H

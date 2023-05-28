@@ -5499,6 +5499,7 @@ CMakeFiles/ZOOrk.dir/ZOOrkEngine.cpp.o: /Users/quocchic/Desktop/ZOOrk/ZOOrkEngin
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/optional \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__tree \
   /Users/quocchic/Desktop/ZOOrk/Passage.h \
+  /Users/quocchic/Desktop/ZOOrk/npc.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/sstream
 
 CMakeFiles/ZOOrk.dir/main.cpp.o: /Users/quocchic/Desktop/ZOOrk/main.cpp \
@@ -5935,6 +5936,7 @@ CMakeFiles/ZOOrk.dir/main.cpp.o: /Users/quocchic/Desktop/ZOOrk/main.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__tree \
   /Users/quocchic/Desktop/ZOOrk/Player.h \
   /Users/quocchic/Desktop/ZOOrk/npc.h \
+  /Users/quocchic/Desktop/ZOOrk/mob.h \
   /Users/quocchic/Desktop/ZOOrk/ZOOrkEngine.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/sstream
 
@@ -6346,6 +6348,8 @@ CMakeFiles/ZOOrk.dir/main.cpp.o: /Users/quocchic/Desktop/ZOOrk/main.cpp \
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_caddr_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/errno.h:
+
+/Users/quocchic/Desktop/ZOOrk/mob.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_in_port_t.h:
 
